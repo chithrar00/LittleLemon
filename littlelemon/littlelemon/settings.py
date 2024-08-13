@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-t=4yifs6qfw32#og9v^frc7be$9bs=uh-&*j1w6d)n(wrd)^f0
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+#Adding setting for Djoser
+DJOSER={"USER_ID_FIELD":"username"}
 
 # Application definition
 
@@ -38,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'restaurant',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser'
 ]
 
 MIDDLEWARE = [
@@ -89,7 +92,14 @@ DATABASES = {
     }
 }
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+        'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],}
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 

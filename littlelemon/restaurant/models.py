@@ -7,6 +7,8 @@ class Menu(models.Model):
     title=models.CharField(max_length=255,default="null")
     price=models.DecimalField(max_digits=10,decimal_places=2,default=0.00)
     inventory=models.SmallIntegerField(default=0)
+    def __str__(self):
+        return f'{self.title} : {str(self.price)}'
 class Booking(models.Model):
     id = models.IntegerField(primary_key=True,default=00000)
     name = models.CharField(max_length=255, default="null")
